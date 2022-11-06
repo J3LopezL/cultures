@@ -1,0 +1,59 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type RegionEntity {
+  id: String!
+  name: String!
+  cultures: [RegionEntity!]!
+}
+
+type CountryEntity {
+  id: String!
+  name: String!
+  location: String!
+  cultures: [CultureEntity!]!
+}
+
+type CultureEntity {
+  id: String!
+  name: String!
+  description: String!
+  regions: [RegionEntity!]!
+  countries: [CountryEntity!]!
+}
+
+type Query {
+  cultures: [CultureEntity!]!
+  culture(id: String!): CultureEntity!
+  regions: [RegionEntity!]!
+  region(id: String!): RegionEntity!
+  countries: [CountryEntity!]!
+  country(id: String!): CountryEntity!
+}
+
+type Mutation {
+  createCulture(culture: CultureDto!): CultureEntity!
+  updateCulture(id: String!, culture: CultureDto!): CultureEntity!
+  deleteCulture(id: String!): String!
+  createRegion(region: RegionDto!): RegionEntity!
+  updateRegion(id: String!, region: RegionDto!): RegionEntity!
+  deleteRegion(id: String!): String!
+  createCountry(country: CountryDto!): CountryEntity!
+  updateCountry(id: String!, country: CountryDto!): CountryEntity!
+  deleteCountry(id: String!): String!
+}
+
+input CultureDto {
+  name: String!
+  description: String!
+}
+
+input RegionDto {
+  name: String!
+}
+
+input CountryDto {
+  name: String!
+  location: String!
+}

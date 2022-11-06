@@ -1,0 +1,16 @@
+/* eslint-disable prettier/prettier */
+import { Field, InputType } from "@nestjs/graphql";
+import { IsNotEmpty, IsString } from "class-validator";
+
+@InputType()
+export class CountryDto {
+    @Field()
+    @IsString()
+    @IsNotEmpty()
+    readonly name: string;
+
+    @Field()
+    @IsString()
+    @IsNotEmpty()
+    readonly location: string;
+}
